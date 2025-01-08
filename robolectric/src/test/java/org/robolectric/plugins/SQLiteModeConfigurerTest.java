@@ -43,7 +43,7 @@ public class SQLiteModeConfigurerTest {
       SQLiteModeConfigurer configurer2 =
           new SQLiteModeConfigurer(System.getProperties(), new PackagePropertiesLoader());
 
-      assertThat(configurer2.defaultConfig()).isSameInstanceAs(Mode.LEGACY);
+      assertThat(configurer2.defaultConfig()).isSameInstanceAs(Mode.NATIVE);
     } finally {
       System.setProperty("os.name", oldName);
     }
