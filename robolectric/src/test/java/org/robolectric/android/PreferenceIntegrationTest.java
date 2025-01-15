@@ -120,12 +120,9 @@ public class PreferenceIntegrationTest {
 
     boolean[] holder = new boolean[1];
     preference.setOnPreferenceClickListener(
-        new Preference.OnPreferenceClickListener() {
-          @Override
-          public boolean onPreferenceClick(Preference preference) {
-            holder[0] = true;
-            return true;
-          }
+        preference1 -> {
+          holder[0] = true;
+          return true;
         });
 
     shadowOf(preference).click();
