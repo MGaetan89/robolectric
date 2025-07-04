@@ -343,13 +343,13 @@ public class ClassInstrumentor {
   /**
    * Generates code like this:
    *
-   * <pre>
+   * <pre>{@code
    * protected void $$robo$init() {
    *   if (__robo_data__ == null) {
    *     __robo_data__ = RobolectricInternals.initializing(this);
    *   }
    * }
-   * </pre>
+   * }/pre>
    */
   private void addRoboInitMethod(MutableClass mutableClass) {
     MethodNode initMethodNode =

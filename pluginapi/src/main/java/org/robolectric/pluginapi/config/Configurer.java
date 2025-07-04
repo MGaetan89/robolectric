@@ -14,22 +14,23 @@ import javax.annotation.Nonnull;
  *
  * <p>For the test:
  *
- * <pre>
- *   class com.foo.MyTest extends com.foo.BaseTest {
- *     &#064;Test void testMethod() {}
- *   }
- * </pre>
+ * <pre>{@code
+ * class com.foo.MyTest extends com.foo.BaseTest {
+ *   @Test void testMethod() {}
+ * }
  *
- * <p>the configuration is applied in the following order:
+ * }</pre>
+ *
+ * <p>The configuration is applied in the following order:
  *
  * <ul>
  *   <li>the {@link #defaultConfig()}
- *   <li>as specified in /robolectric.properties
- *   <li>as specified in /com/robolectric.properties
- *   <li>as specified in /com/foo/robolectric.properties
- *   <li>as specified in BaseTest
- *   <li>as specified in MyTest
- *   <li>as specified in MyTest.testMethod
+ *   <li>as specified in {@code /robolectric.properties}
+ *   <li>as specified in {@code /com/robolectric.properties}
+ *   <li>as specified in {@code /com/foo/robolectric.properties}
+ *   <li>as specified in {@code BaseTest}
+ *   <li>as specified in {@code MyTest}
+ *   <li>as specified in {@code MyTest.testMethod}
  * </ul>
  *
  * <p>Configuration objects can be accessed by shadows or tests via {@link

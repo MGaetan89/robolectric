@@ -11,6 +11,7 @@ import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.android.util.concurrent.BackgroundExecutor;
+import org.robolectric.annotation.LooperMode;
 
 /**
  * Let tests to run on background thread, if it has annotation {@link BackgroundTest}.
@@ -19,22 +20,22 @@ import org.robolectric.android.util.concurrent.BackgroundExecutor;
  *
  * <p>Example usage:
  *
- * <pre>
- * {@literal @}Rule public final BackgroundTestRule backgroundTestRule = new BackgroundTestRule();
+ * <pre>{@code
+ * @Rule public final BackgroundTestRule backgroundTestRule = new BackgroundTestRule();
  *
- * {@literal @}Test
- * {@literal @}BackgroundTest
+ * @Test
+ * @BackgroundTest
  * public void testInBackground() {
  *   assertThat(Looper.myLooper()).isNotEqualTo(Looper.getMainLooper());
  * }
  *
- * {@literal @}Test
+ * @Test
  * public void testInForeground() throws Exception {
  *   assertThat(Looper.myLooper()).isEqualTo(Looper.getMainLooper());
  * }
- * </pre>
+ * }</pre>
  *
- * @deprecated use LooperMode.Mode.INSTRUMENTATION_TEST instead
+ * @deprecated use {@link LooperMode.Mode#INSTRUMENTATION_TEST} instead
  */
 @Deprecated
 public final class BackgroundTestRule implements TestRule {

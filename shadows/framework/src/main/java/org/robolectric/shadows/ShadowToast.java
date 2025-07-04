@@ -113,20 +113,18 @@ public class ShadowToast {
    * This method allows the user to discard recorded toasts during the test in order to make
    * assertions clearer e.g:
    *
-   * <pre>
+   * <pre>{@code
+   * // Show a single toast
+   * myClass.showToast();
    *
-   *   // Show a single toast
-   *   myClass.showToast();
+   * assertThat(ShadowToast.shownToastCount()).isEqualTo(1);
+   * ShadowToast.reset();
    *
-   *   assertThat(ShadowToast.shownToastCount()).isEqualTo(1);
-   *   ShadowToast.reset();
+   * // Show another toast
+   * myClass.showToast();
    *
-   *    // Show another toast
-   *   myClass.showToast();
-   *
-   *   assertThat(ShadowToast.shownToastCount()).isEqualTo(1);
-   *
-   * </pre>
+   * assertThat(ShadowToast.shownToastCount()).isEqualTo(1);
+   * }</pre>
    */
   public static void reset() {
     ShadowApplication shadowApplication = Shadow.extract(RuntimeEnvironment.getApplication());

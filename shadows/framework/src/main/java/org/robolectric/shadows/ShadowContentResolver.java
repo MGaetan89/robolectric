@@ -782,13 +782,13 @@ public class ShadowContentResolver {
   /**
    * Internal-only method, do not use!
    *
-   * <p>Instead, use
+   * <p>Instead, use:
    *
-   * <pre>
+   * <pre>{@code
    * ProviderInfo info = new ProviderInfo();
    * info.authority = authority;
    * Robolectric.buildContentProvider(ContentProvider.class).create(info);
-   * </pre>
+   * }</pre>
    */
   public static void registerProviderInternal(String authority, ContentProvider provider) {
     providers.put(authority, provider);

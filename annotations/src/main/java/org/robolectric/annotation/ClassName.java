@@ -6,27 +6,26 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Parameters, function return with types that can't be resolved at compile time may be annotated
- * with @ClassName.
+ * Method parameters and return type with types that can't be resolved at compile time may be
+ * annotated with {@code @ClassName}.
  *
  * <p>Use this annotation when creating shadow methods that contain new Android types in the method
- * signature, return type that do not exist in older SDK levels.
+ * signature or return type that do not exist in older SDK levels.
  *
- * <pre>
- * &#64;Implements(FooAndroidClass.class)
+ * <pre>{@code
+ * @Implements(FooAndroidClass.class)
  * class ShadowFooAndroidClass {
  *
  *    // A method shadowing FooAndroidClass#setBar(com.android.RealClassName, int, String)
- *    // Generally, &#64;ClassName will be used together with Object type.
- *    &#64;Implementation
- *    public &#64;ClassName("com.android.RealReturnType") Object setBar(
- *        &#64;ClassName("com.android.RealClassName", addedInSdk = 36) Object para1,
- *        int para2,
- *        String para3) {
- *
+ *    // Generally, @ClassName will be used together with Object type.
+ *    @Implementation
+ *    public @ClassName("com.android.RealReturnType") Object setBar(
+ *        @ClassName("com.android.RealClassName", addedInSdk = 36) Object param1,
+ *        int param2,
+ *        String param3) {
  *    }
  * }
- * </pre>
+ * }</pre>
  */
 @Target({ElementType.TYPE_USE, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)

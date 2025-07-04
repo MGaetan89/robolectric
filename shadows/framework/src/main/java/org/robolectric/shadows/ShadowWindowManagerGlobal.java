@@ -145,12 +145,12 @@ public class ShadowWindowManagerGlobal {
    * #cancel()} or {@link #close()}, if {@link #cancel()} is called a subsequent call to {@link
    * #close()} will do nothing to allow using the gesture in a try with resources statement:
    *
-   * <pre>
+   * <pre>{@code
    * try (PredictiveBackGesture backGesture =
    *     ShadowWindowManagerGlobal.startPredictiveBackGesture(BackEvent.EDGE_LEFT)) {
    *   backGesture.moveBy(10, 10);
    * }
-   * </pre>
+   * }</pre>
    */
   public static final class PredictiveBackGesture implements Closeable {
     @BackEvent.SwipeEdge private final int edge;

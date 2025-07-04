@@ -19,18 +19,18 @@ import org.robolectric.util.PerfStatsCollector;
  * <p>For example, to access a private method on some class {@code Foo}, declare an accessor
  * interface:
  *
- * <pre>
+ * <pre>{@code
  * class Foo {
  *   private String getName() { ... }
  * }
  *
- * &#064;ForType(Foo.class)
+ * @ForType(Foo.class)
  * interface FooReflector {
  *   String getName();
  * }
  *
  * reflector(FooReflector.class, new Foo()).getName();
- * </pre>
+ * }</pre>
  */
 @SuppressWarnings("NewApi")
 public class Reflector {

@@ -6,25 +6,26 @@ import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 import org.robolectric.internal.TimeLimitedStatement;
+import org.robolectric.util.Scheduler;
 
 /**
- * Robolectric's replacement for JUnit's {@link org.junit.rules.Timeout Timeout}.
+ * Robolectric's replacement for JUnit's {@link org.junit.rules.Timeout Timeout} rule.
  *
  * <p>{@link org.junit.rules.Timeout Timeout} spawns a new thread, which is not compatible with
- * Robolectric's Scheduler. Instead this Rule uses {@link
+ * Robolectric's {@link Scheduler}. Instead this Rule uses {@link
  * org.robolectric.internal.TimeLimitedStatement TimeLimitedStatement} like {@code @Test(timeout=)}
  * does.
  *
  * <p>Example usage:
  *
- * <pre>
- * {@literal @}Rule public final TimeoutRule timeoutRule = TimeoutRule.seconds(40);
+ * <pre>{@code
+ * @Rule public final TimeoutRule timeoutRule = TimeoutRule.seconds(40);
  *
- * {@literal @}Test
- *  public void testWhichShouldFinishIn40Seconds() {
- *    // ...
- *  }
- * </pre>
+ * @Test
+ * public void testWhichShouldFinishIn40Seconds() {
+ *   // ...
+ * }
+ * }</pre>
  */
 public class TimeoutRule implements TestRule {
 
