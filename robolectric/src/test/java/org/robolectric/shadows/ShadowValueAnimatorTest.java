@@ -9,10 +9,9 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.view.View;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-import com.google.common.collect.Ordering;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
@@ -23,14 +22,16 @@ public class ShadowValueAnimatorTest {
 
   @Test
   public void start_shouldRunAnimation() {
-    final List<Integer> values = new ArrayList<>();
+    final Set<Integer> values = new LinkedHashSet<>();
 
     final ValueAnimator animator = ValueAnimator.ofInt(0, 10);
     animator.setDuration(1000);
     animator.addUpdateListener(animation -> values.add((int) animation.getAnimatedValue()));
     animator.start();
+    shadowMainLooper().idle();
 
-    assertThat(values).isInOrder(Ordering.natural());
+    assertThat(values).containsExactly(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).inOrder();
+    assertThat(animator.isRunning()).isFalse();
   }
 
   @Test
